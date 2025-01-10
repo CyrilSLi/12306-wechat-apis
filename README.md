@@ -1,6 +1,8 @@
 # 12306 微信小程序信息类 API 收集
 
-**此合集不包括** `leftTicketDTO` **等购票类接口，不能用来刷票抢票，仅供学习交流使用。**
+**此合集不包括** `leftTicketDTO` **等购票类接口，不能用来刷票抢票，资源仅供学习交流使用。**
+
+**如有遗漏请提交 PR 补充 :)**
 
 ## 通用注意事项
 
@@ -35,7 +37,10 @@
 
 ## 常用/重要接口
 
-
+- [车次运行信息](#车次运行信息-httpsmobile12306cnwxxcxwechatmaintravelserviceqrcodetraininfo)
+- [车次走向](#车次走向-httpsmobile12306cnwxxcxwechatmaingettrainmapline)
+- [车次停站信息](#车次停站信息-httpsmobile12306cnwxxcxwechatticketinfogetstopstation)
+- [列车信息](#列车信息-httpsmobile12306cnwxxcxwechatmaingettraininfo)
 
 ## 全部接口列表
 
@@ -102,7 +107,7 @@
 ### 车站信息 (https://mobile.12306.cn/wxxcx/openplatform-inner/miniprogram/wifiapps/appFrontEnd/v2/lounge/open-smooth-common/stationEquipment/getStationMapInfo)
 
 - 参数：`?stationTelecode=【车站列表】&queryType=【种类】&reqType=json`
-- 种类：`1` - 行李与公司信息，`2` - 餐食库存信息
+- 种类/返回：`1` - 行李与公司信息，`2` - 餐食库存信息
 
 ### 车次走向 (https://mobile.12306.cn/wxxcx/wechat/main/getTrainMapLine)
 
