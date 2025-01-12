@@ -40,7 +40,7 @@
 - [车次运行信息](#车次运行信息-httpsmobile12306cnwxxcxwechatmaintravelserviceqrcodetraininfo)
 - [车次走向](#车次走向-httpsmobile12306cnwxxcxwechatmaingettrainmapline)
 - [车次停站信息](#车次停站信息-httpsmobile12306cnwxxcxwechatticketinfogetstopstation)
-- [列车信息](#列车信息-httpsmobile12306cnwxxcxwechatmaingettraininfo)
+- [车站车次大屏](#车站车次大屏-httpsmobile12306cnwxxcxwechatbigscreenquerytrainbystation)
 
 ## 全部接口列表
 
@@ -134,15 +134,6 @@
 - 返回：车次停站信息，包括车站名称、到发时间、停留时间、电报码等。
 - **`f_station_telcode=【车站】`** 为可选参数，可提供出发车站的电报码。该参数估计是为了分辨过夜车次日期从哪个站开始计算。
 
-### 列车信息 (https://mobile.12306.cn/wxxcx/wechat/main/getTrainInfo)
-
-- **该接口使用 `GET` 请求**
-- 参数：`?carCode=【列车号】&trainCode=【车次码】&runningDay=【日期】&reqType=form`
-- 该接口有两种索引方式：
-  - 根据车次与日期（列车号为空）：例如 `?carCode=&trainCode=G1234&runningDay=20210930`
-  - 根据列车号（车次码与日期为空）：例如 `?carCode=CR400BF-5033&trainCode=&runningDay=`
-- 返回：列车信息，包括车厢信息（种类、车厢号、定员、座位图链接等）、列车信息（型号、长度、定员等）。
-
 ### 换乘时间 (https://mobile.12306.cn/wxxcx/wechat/main/getLCLimitWaitTime)
 
 - 参数：`?station_telecode=【车站】&train_date=【日期】`
@@ -153,3 +144,12 @@
 - 参数：`?stationCode=【车站】`
 - 返回：车站地址、坐标等信息。
 
+### 车站车次大屏 (https://mobile.12306.cn/wxxcx/wechat/bigScreen/queryTrainByStation)
+
+- 参数：`?train_start_date=【日期】&train_station_code=【车站】`
+- 返回：日期参数以后所有途径该车站的车次信息，包括到发站/时间、管理信息（路局、管内/外、临客等）、担当车底/车辆段（包括普速和高铁）等，比12306官网车次查询更详细。
+
+### 车次开行日期 (https://mobile.12306.cn/wxxcx/wechat/bigScreen/queryTrainDiagram)
+
+- 参数：`?queryDate=【日期】&trainCode=【车次码】`
+- 返回：三个月内该车次那些日期开行。
