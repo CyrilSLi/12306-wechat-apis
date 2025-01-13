@@ -144,6 +144,15 @@
 - 参数：`?stationCode=【车站】`
 - 返回：车站地址、坐标等信息。
 
+### 列车车厢信息 (https://mobile.12306.cn/wxxcx/openplatform-inner/miniprogram/wifiapps/appFrontEnd/v2/lounge/open-smooth-common/trainStyleBatch/getCarDetail)
+
+- **该接口使用 `GET` 请求**
+- 参数：`?carCode=【列车号】&trainCode=【车次码】&runningDay=【日期】&reqType=form`
+- 该接口有两种索引方式：
+  - 根据车次与日期（列车号为空）：例如 `?carCode=&trainCode=G1234&runningDay=20210930`
+  - 根据列车号（车次码与日期为空）：例如 `?carCode=CR400BF-5033&trainCode=&runningDay=`
+- 返回：列车车厢信息，包括种类、车厢号、定员、座位图链接等。
+
 ### 车站车次大屏 (https://mobile.12306.cn/wxxcx/wechat/bigScreen/queryTrainByStation)
 
 - 参数：`?train_start_date=【日期】&train_station_code=【车站】`
