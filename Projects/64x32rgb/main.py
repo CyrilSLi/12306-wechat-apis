@@ -86,7 +86,7 @@ def draw_text (string, color, *, x=0, y=0, align=None, truncate=True):
 # start of program functions
 
 cf = {
-    "station": "HGH",
+    "station": "ZAF",
     "num_trains": 3,
     "wait": 4,
     "wait_small": 0.8,
@@ -207,14 +207,14 @@ def fetch_data():
             draw_text(i["train_type_name"], 2, y=16, align="m")
             sleep(cf["wait_small"])
 
-        if cache["shape"].get(i["train_no"]) is None:
+        if cache["shape"].get(i["station_train_code"]) is None:
             shape = post(f"https://mobile.12306.cn/wxxcx/wechat/main/getTrainMapLine?version=v2&trainNo={i["train_no"]}")
             if "data" in shape and len(shape["data"]) > 0:
-                cache["shape"][i["train_no"]] = shape["data"]
+                cache["shape"][i["station_train_code"]] = shape["data"]
             else:
-                cache["shape"][i["train_no"]] = False # no data
+                cache["shape"][i["station_train_code"]] = False # no data
                 print("No shape data found for " + i["train_no"])
-        shape = cache["shape"].get(i["train_no"])
+        shape = cache["shape"].get(i["station_train_code"])
         if shape:
             matrix.fill(0)
             draw_text(i["station_train_code"], 1, x=34, y=0) # e.g. G1234
@@ -266,6 +266,12 @@ def fetch_data():
             draw_pt(shape[-1], 6) # end station
             draw_pt(stopseg, 2)   # stop station
             sleep(cf["wait_map"])
+        
+    for i in ("dandang", "shape"):
+        for j in list(cache[i].keys()):
+            if j not in (k["station_train_code"] for k in bigscreen):
+                del cache[i][j] # free up unused train data
+                print(f"Cleared {i} cache for {j}")
 
 while True:
     try:
