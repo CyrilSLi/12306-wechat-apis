@@ -1,4 +1,4 @@
-# https://web.archive.org/web/20160715002102/https://bitbucket.org/hudson/model100/src/tip/font.c?fileviewer=file-view-default
+# https://web.archive.org/web/20160715002102/https://bitbucket.org/hudson/model100/src/tip/font.c
 
 fontstr = """
 	[' '] = {0x00,0x00,0x00,0x00,0x00,0x00},
