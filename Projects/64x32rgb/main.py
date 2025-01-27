@@ -21,7 +21,7 @@ palette[7] = 0xFFFFFF
 
 _group = displayio.Group()
 display.root_group = _group
-matrix = displayio.Bitmap(64, 32, 3)
+matrix = displayio.Bitmap(64, 32, 8)
 _tilegrid = displayio.TileGrid(matrix, pixel_shader=palette)
 _group.append(_tilegrid)
 
@@ -86,7 +86,7 @@ def draw_text (string, color, *, x=0, y=0, align=None, truncate=True):
 # start of program functions
 
 cf = {
-    "station": "ZAF",
+    "station": "HGH",
     "num_trains": 3,
     "wait": 4,
     "wait_small": 0.8,
