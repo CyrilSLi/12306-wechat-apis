@@ -1,0 +1,3 @@
+git+https://github.com/CyrilSLi/Blinka_Displayio_PyGameDisplay.git@a7262ebd1e4f103f9aa7bc4c8c26aacd4e21259f
+adafruit-blinka-displayio
+requests
